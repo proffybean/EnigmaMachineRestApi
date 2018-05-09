@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnigmaMachineRestApi", "EnigmaMachineRestApi\EnigmaMachineRestApi.csproj", "{3851E3C1-08EC-42FA-8E8C-24DF852199D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{F418B171-D6CA-4579-81ED-BE560643D89F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3851E3C1-08EC-42FA-8E8C-24DF852199D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3851E3C1-08EC-42FA-8E8C-24DF852199D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3851E3C1-08EC-42FA-8E8C-24DF852199D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3851E3C1-08EC-42FA-8E8C-24DF852199D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F418B171-D6CA-4579-81ED-BE560643D89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F418B171-D6CA-4579-81ED-BE560643D89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F418B171-D6CA-4579-81ED-BE560643D89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F418B171-D6CA-4579-81ED-BE560643D89F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C5B63C1-B9FE-4B78-BD31-AFC761D681DF}
+	EndGlobalSection
+EndGlobal
