@@ -59,6 +59,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnigmaTests\EnigmaMachineTests.cs" />
+    <Compile Include="EnigmaTests\PlugboardTests.cs" />
+    <Compile Include="EnigmaTests\ReflectorTests.cs" />
+    <Compile Include="EnigmaTests\RotorTests.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\EnigmaMachineRestApi\EnigmaMachineRestApi.csproj">
       <Project>{3851e3c1-08ec-42fa-8e8c-24df852199d9}</Project>
       <Name>EnigmaMachineRestApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enigma\Enigma.csproj">
+      <Project>{bfae4df8-ae00-485f-a4ae-1355450a3f66}</Project>
+      <Name>Enigma</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

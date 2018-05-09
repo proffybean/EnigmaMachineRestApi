@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using EnigmaMachineRestApi.Models;
 using Newtonsoft.Json;
-using Components;
+using Enigma;
 
 namespace EnigmaMachineRestApi.Controllers
 {

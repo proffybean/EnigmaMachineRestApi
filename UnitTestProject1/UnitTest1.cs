@@ -19,9 +19,7 @@ namespace UnitTestProject1
             var enigmaController = new EnigmaController();
             RotorDto rotorDto = new RotorDto
             {
-                Mapping = "bdfhjlcprtxvznyeiwgakmusqo",
-                Rotate = true,
-                AdjacentRotorAdvanceOffset = 21,
+                RotorNum = 1,
                 InitialDialSetting = 'z'
             };
 
@@ -38,9 +36,7 @@ namespace UnitTestProject1
             // Arrange
             var enigmaController = new EnigmaController();
             string json = @"{
-	                        'Mapping':'bdfhjlcprtxvznyeiwgakmusqo',
-                            'Rotate':true,
-	                        'Offset':21,
+	                        'RotorNum':1,
 	                        'Setting':'a'
                         }";
 
