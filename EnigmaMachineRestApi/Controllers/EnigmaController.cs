@@ -60,9 +60,16 @@ namespace EnigmaMachineRestApi.Controllers
             return response;
         }
 
+        /// <summary>
+        /// This is the summary for Encrypt
+        /// </summary>
+        /// <param name="enigmaMachineDto">This is the param for enigmaMachineDto</param>
+        /// <param name="leaveWhiteSpace">and this is leaveWiteSpace</param>
+        /// <returns>This is what the thing returns</returns>
+        /// <remarks>Here is my remarks</remarks>
         [Route("Encrypt")]
         [HttpPost]
-        public HttpResponseMessage Encrypt([FromBody] EnigmaMachineDto enigmaMachineDto)
+        public HttpResponseMessage Encrypt([FromBody] EnigmaMachineDto enigmaMachineDto, [FromUri] bool leaveWhiteSpace)
         {
             HttpResponseMessage response;
 
@@ -82,7 +89,7 @@ namespace EnigmaMachineRestApi.Controllers
                     enigmaMachineDto.Rotor2.InitialDialSetting,
                     enigmaMachineDto.Rotor3.InitialDialSetting);
 
-                enigmaMachine.LeaveWhiteSpace(true);
+                enigmaMachine.LeaveWhiteSpace(leaveWhiteSpace);
 
                 string encodedMessage = enigmaMachine.Encode(enigmaMachineDto.Text);
                 response = Request.CreateResponse(HttpStatusCode.OK, encodedMessage);
