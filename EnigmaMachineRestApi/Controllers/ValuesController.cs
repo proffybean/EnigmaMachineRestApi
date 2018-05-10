@@ -37,6 +37,7 @@ namespace EnigmaMachineRestApi.Controllers
         }
 
         [Route("api/values/shizzle")]
+        [HttpGet]
         public string Shizzle()
         {
             return "You've Shizzled!";
