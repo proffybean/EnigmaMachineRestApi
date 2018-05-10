@@ -35,5 +35,11 @@ namespace EnigmaMachineRestApi.Controllers
         public void Delete(int id)
         {
         }
+
+        [Route("api/values/shizzle")]
+        public string Shizzle()
+        {
+            return "You've Shizzled!";
+        }
     }
 }
