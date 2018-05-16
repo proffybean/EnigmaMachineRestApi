@@ -135,9 +135,12 @@ namespace Enigma
 
         public void SetPlugboard(IEnumerable<KeyValuePair<char, char>> pairs)
         {
-            foreach (KeyValuePair<char, char> pair in pairs)
+            if (pairs != null)
             {
-                SetPlugboardPair(pair.Key, pair.Value);
+                foreach (KeyValuePair<char, char> pair in pairs)
+                {
+                    SetPlugboardPair(pair.Key, pair.Value);
+                }
             }
         }
 
