@@ -44,6 +44,11 @@ namespace Enigma
             }
         }
 
+        public char DialSetting
+        {
+            get { return (char)(Offset + Convert.ToByte('A')); }
+        }
+
         public char ConvertLetter(char c) // TODO: make lowercase c.ToLower();
         {
             //ASCIIEncoding.ASCII.GetBytes(c);

@@ -13,7 +13,53 @@ namespace EnigmaMachineRestApi.Controllers
     [RoutePrefix("api/Enigma")]
     public class EnigmaController : ApiController
     {
-        public static EnigmaMachine enigmaMachine;
+        public static EnigmaMachine staticEnigmaMachine = new EnigmaMachine();
+
+        /// <summary>
+        /// Parses the rotors string sent in the Uri.  The first char becomes
+        /// the rotor in the first slot of the enigma machine.  The second char
+        /// becomes the rotor in the second slot, etc.
+        /// </summary>
+        /// <param name="rotors">String of length 3 containing numerals 1-5</param>
+        /// <returns></returns>
+        [Route("ChooseRotors")]
+        [HttpPost]
+        public HttpResponseMessage ChooseRotors([FromUri] string rotors)
+        {
+            HttpResponseMessage message;
+
+            try
+            {
+                if (rotors.Length != 3)
+                {
+                    throw new Exception("must indicate 3 rotors");
+                }
+
+                if (!Int32.TryParse(rotors.Substring(0, 1), out int firstRotor))
+                {
+                    throw new Exception("Cound not parse first rotor");
+                }
+
+                if (!Int32.TryParse(rotors.Substring(1, 1), out int secondRotor))
+                {
+                    throw new Exception("Cound not parse second rotor");
+                }
+
+                if (!Int32.TryParse(rotors.Substring(2, 1), out int thirdRotor))
+                {
+                    throw new Exception("Cound not parse third rotor");
+                }
+
+                staticEnigmaMachine.ChooseRotors(firstRotor, secondRotor, thirdRotor);
+                message = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                message = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            return message;
+        }
 
         [Route("SetRotor/{id:int:Range(1,3)}")]
         [HttpPost]
@@ -25,12 +71,11 @@ namespace EnigmaMachineRestApi.Controllers
 
             try
             {
-                enigmaMachine.SetRotorDial(id, rotorDto.InitialDialSetting);
+                staticEnigmaMachine.SetRotorDial(id, rotorDto.InitialDialSetting);
             }
             catch (Exception ex)
             {
                 response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                throw;
             }
 
             response = Request.CreateResponse(HttpStatusCode.OK);
@@ -48,34 +93,52 @@ namespace EnigmaMachineRestApi.Controllers
 
             try
             {
-                enigmaMachine.SetPlugboard(plugboardDto.Wiring);
+                staticEnigmaMachine.SetPlugboard(plugboardDto.Wiring);
             }
             catch (Exception ex)
             {
                 response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                throw;
             }
             response = Request.CreateResponse(HttpStatusCode.OK);
 
             return response;
         }
 
+        [Route("EncryptStatic")]
+        [HttpPost]
+        public HttpResponseMessage EncryptStatic([FromBody] string text)
+        {
+            HttpResponseMessage message;
+
+            try
+            {
+                string encodedText = staticEnigmaMachine.Encode(text);
+                message = Request.CreateResponse(HttpStatusCode.OK, encodedText);
+            }
+            catch (Exception ex)
+            {
+                message = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+
+            return message;
+        }
+
         /// <summary>
-        /// This is the summary for Encrypt
+        /// Uses settings in the EnigmaMachineDto to create and setup an enigma machine.
+        /// It then encrypts the message with those settings.
         /// </summary>
-        /// <param name="enigmaMachineDto">This is the param for enigmaMachineDto</param>
-        /// <param name="leaveWhiteSpace">and this is leaveWiteSpace</param>
-        /// <returns>This is what the thing returns</returns>
-        /// <remarks>Here is my remarks</remarks>
+        /// <param name="enigmaMachineDto">The entire enigma machine settings in one JSON object</param>
+        /// <param name="leaveWhiteSpace">true to leave the white space in the text</param>
+        /// <returns>Enigma encryted text</returns>
         [Route("Encrypt")]
         [HttpPost]
         public HttpResponseMessage Encrypt([FromBody] EnigmaMachineDto enigmaMachineDto, [FromUri] bool leaveWhiteSpace)
         {
             HttpResponseMessage response;
+            EnigmaMachine enigmaMachine;
 
             try
             {
-                // TODO: don't use a static machine here.  It's not stateless
                 enigmaMachine = new EnigmaMachine();
                 enigmaMachine.SetPlugboard(enigmaMachineDto.Plugboard.Wiring);
 
@@ -92,12 +155,12 @@ namespace EnigmaMachineRestApi.Controllers
                 enigmaMachine.LeaveWhiteSpace(leaveWhiteSpace);
 
                 string encodedMessage = enigmaMachine.Encode(enigmaMachineDto.Text);
+
                 response = Request.CreateResponse(HttpStatusCode.OK, encodedMessage);
             }
             catch (Exception ex)
             {
                 response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                throw;
             }
 
             return response;
