@@ -72,13 +72,12 @@ namespace EnigmaMachineRestApi.Controllers
             try
             {
                 staticEnigmaMachine.SetRotorDial(id, rotorDto.InitialDialSetting);
+                response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
                 response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
-
-            response = Request.CreateResponse(HttpStatusCode.OK);
 
             return response;
         }
@@ -94,12 +93,12 @@ namespace EnigmaMachineRestApi.Controllers
             try
             {
                 staticEnigmaMachine.SetPlugboard(plugboardDto.Wiring);
+                response = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
                 response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
-            response = Request.CreateResponse(HttpStatusCode.OK);
 
             return response;
         }

@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EnigmaMachineRestApi.Controllers;
 using System.Net.Http;
 using System.Net;
+using Newtonsoft.Json;
+using EnigmaMachineRestApi.Models;
 
 namespace UnitTestProject1.ControllerTests
 {
@@ -52,7 +54,7 @@ namespace UnitTestProject1.ControllerTests
         }
 
         [TestMethod]
-        public void ChooseRotors_ShouldReturn200Ok_WhenPassedRotors1234()
+        public void ChooseRotors_ShouldReturn400_WhenPassedRotors1234()
         {
             // Arrange
             var controller = new EnigmaController();
@@ -66,7 +68,7 @@ namespace UnitTestProject1.ControllerTests
         }
 
         [TestMethod]
-        public void ChooseRotors_ShouldReturn200Ok_WhenPassedRotors12()
+        public void ChooseRotors_ShouldReturn400_WhenPassedRotors12()
         {
             // Arrange
             var controller = new EnigmaController();
@@ -80,7 +82,7 @@ namespace UnitTestProject1.ControllerTests
         }
 
         [TestMethod]
-        public void ChooseRotors_ShouldReturn200Ok_WhenPassedRotorsABC()
+        public void ChooseRotors_ShouldReturn400_WhenPassedRotorsABC()
         {
             // Arrange
             var controller = new EnigmaController();

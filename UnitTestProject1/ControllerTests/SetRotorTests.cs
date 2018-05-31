@@ -24,8 +24,10 @@ namespace UnitTestProject1.ControllerTests
                 'Setting':'a'
               }";
 
+            HttpResponseMessage message = controller.ChooseRotors("123");
+
             // Act
-            var message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 1);
+            message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 1);
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, message.StatusCode);
@@ -44,8 +46,10 @@ namespace UnitTestProject1.ControllerTests
                 'Setting':'z'
               }";
 
+            HttpResponseMessage message = controller.ChooseRotors("123");
+
             // Act
-            var message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 2);
+            message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 2);
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, message.StatusCode);
@@ -64,8 +68,10 @@ namespace UnitTestProject1.ControllerTests
                 'Setting':'k'
               }";
 
+            HttpResponseMessage message = controller.ChooseRotors("123");
+
             // Act
-            var message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 2);
+            message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 2);
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, message.StatusCode);
@@ -88,12 +94,13 @@ namespace UnitTestProject1.ControllerTests
                 'Setting':'k'
               }";
 
+            HttpResponseMessage message = controller.ChooseRotors("123");
+
             // Act
-            var message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 2);
+            message = controller.SetRotor(JsonConvert.DeserializeObject<RotorDto>(jsonRotor), 2);
 
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, message.StatusCode);
         }
-
     }
 }
