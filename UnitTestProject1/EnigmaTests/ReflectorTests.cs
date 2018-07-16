@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
  
 
-namespace UnitTests
+namespace UnitTestProject1.EnigmaTests
 {
     [TestClass]
     public class ReflectorTests

@@ -79,21 +79,12 @@ namespace Enigma
 
         public void SetWiring(char char1, char char2)
         {
-            char outChar; 
-
-            if (_wiring.TryGetValue(char1, out outChar))
+            if (_wiring.TryGetValue(char1, out char outChar))
             {
                 RemoveWiring(char1, outChar);
             }
 
-            //if (_wiring.ContainsKey(char1))
-            //{
-            //    RemoveWiring(char1, char2);
-            //}
-
-            char outChar2;
-
-            if (_wiring.TryGetValue(outChar, out outChar2))
+            if (_wiring.TryGetValue(outChar, out char outChar2))
             {
                 RemoveWiring(outChar, outChar2);
             }
@@ -103,61 +94,28 @@ namespace Enigma
                 throw new ArgumentOutOfRangeException($"Cannot set NumberPairs > 20");
             }
 
-            //NumberPairs++;
             _wiring.Add(char1, char2);
             _wiring.Add(char2, char1);
         }
 
-        //public void RemoveWiring(char char1)
-        //{
-        //    if (!_wiring.ContainsKey(char1))
-        //    {
-        //        //throw new ArgumentException("That key doesn't exist");
-        //    }
-
-        //    char char2 = _wiring[char1];
-        //    if (!_wiring.ContainsKey(char2))
-        //    {
-        //        //throw new ArgumentException("That key doesn't exist");
-        //    }
-
-        //    RemoveWiring(char1, char2);
-
-        //    //if (!_wiring.ContainsKey(char1))
-        //    //{
-        //    //    throw new ArgumentException("That key doesn't exist");
-        //    //}
-        //    //NumberPairs--;
-        //    //_wiring.Remove(char1);
-        //}
-
         public void RemoveWiring(char char1, char char2)
         {
-            char outChar;
-
-            if (_wiring.TryGetValue(char1, out outChar))
+            if (_wiring.TryGetValue(char1, out char outChar))
             {
                 if (outChar == char2)
+                {
                     _wiring.Remove(char1);
+                }
+                    
             }
-            //_wiring.Remove(char1);
-            //throw new ArgumentException("That key doesn't exist");
-
 
             if (_wiring.TryGetValue(char2, out outChar))
             {
                 if (outChar == char1)
+                { 
                     _wiring.Remove(char2);
-                //throw new ArgumentException("That key doesn't exist");
+                }
             }
-            //NumberPairs--;
-
-            
-
-            //_wiring.Remove(char1);
-            //_wiring.Remove(char2);
-
-            
         }
 
         public void ResetWiring()
