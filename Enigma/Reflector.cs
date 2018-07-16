@@ -9,96 +9,63 @@ namespace Enigma
 {
     public class Reflector : IReflector
     {
-        private Dictionary<char, char> Wiring;
+        private Dictionary<char, char> _wiring;
 
         public Reflector()
         {
-            Wiring = new Dictionary<char, char>();
-            this.SetWiring();
+            _wiring = new Dictionary<char, char>();
+            SetWiring();
         }
-
-        /// <summary>
-        /// Notice, if a -> b, then b must -> a for decryption
-        /// </summary>
-        //private void SetWiring()
-        //{
-        //    Wiring.Add('a', 'q');
-        //    Wiring.Add('b', 'y');
-        //    Wiring.Add('c', 'h');
-        //    Wiring.Add('d', 'o');
-        //    Wiring.Add('e', 'g');
-        //    Wiring.Add('f', 'n');
-        //    Wiring.Add('g', 'e');
-        //    Wiring.Add('h', 'c');
-        //    Wiring.Add('i', 'v');
-        //    Wiring.Add('j', 'p');
-        //    Wiring.Add('k', 'u');
-        //    Wiring.Add('l', 'z');
-        //    Wiring.Add('m', 't');
-        //    Wiring.Add('n', 'f');
-        //    Wiring.Add('o', 'd');
-        //    Wiring.Add('p', 'j');
-        //    Wiring.Add('q', 'a');
-        //    Wiring.Add('r', 'x');
-        //    Wiring.Add('s', 'w');
-        //    Wiring.Add('t', 'm');
-        //    Wiring.Add('u', 'k');
-        //    Wiring.Add('v', 'i');
-        //    Wiring.Add('w', 's');
-        //    Wiring.Add('x', 'r');
-        //    Wiring.Add('y', 'b');
-        //    Wiring.Add('z', 'l');
-        //}
 
         /// <summary>
         /// Wiring from http://enigmaco.de/enigma/enigma.html
         /// </summary>
         private void SetWiring()
         {
-            Wiring.Add('a', 'y');
-            Wiring.Add('b', 'r');
-            Wiring.Add('c', 'u');
-            Wiring.Add('d', 'h');
-            Wiring.Add('e', 'q');
-            Wiring.Add('f', 's');
-            Wiring.Add('g', 'l');
-            Wiring.Add('h', 'd');
-            Wiring.Add('i', 'p');
-            Wiring.Add('j', 'x');
-            Wiring.Add('k', 'n');
-            Wiring.Add('l', 'g');
-            Wiring.Add('m', 'o');
-            Wiring.Add('n', 'k');
-            Wiring.Add('o', 'm');
-            Wiring.Add('p', 'i');
-            Wiring.Add('q', 'e');
-            Wiring.Add('r', 'b');
-            Wiring.Add('s', 'f');
-            Wiring.Add('t', 'z');
-            Wiring.Add('u', 'c');
-            Wiring.Add('v', 'w');
-            Wiring.Add('w', 'v');
-            Wiring.Add('x', 'j');
-            Wiring.Add('y', 'a');
-            Wiring.Add('z', 't');
+            _wiring.Add('a', 'y');
+            _wiring.Add('b', 'r');
+            _wiring.Add('c', 'u');
+            _wiring.Add('d', 'h');
+            _wiring.Add('e', 'q');
+            _wiring.Add('f', 's');
+            _wiring.Add('g', 'l');
+            _wiring.Add('h', 'd');
+            _wiring.Add('i', 'p');
+            _wiring.Add('j', 'x');
+            _wiring.Add('k', 'n');
+            _wiring.Add('l', 'g');
+            _wiring.Add('m', 'o');
+            _wiring.Add('n', 'k');
+            _wiring.Add('o', 'm');
+            _wiring.Add('p', 'i');
+            _wiring.Add('q', 'e');
+            _wiring.Add('r', 'b');
+            _wiring.Add('s', 'f');
+            _wiring.Add('t', 'z');
+            _wiring.Add('u', 'c');
+            _wiring.Add('v', 'w');
+            _wiring.Add('w', 'v');
+            _wiring.Add('x', 'j');
+            _wiring.Add('y', 'a');
+            _wiring.Add('z', 't');
         }
 
         public Dictionary<char, char> GetWiring()
         {
             var Wiring = new Dictionary<char, char>();
-            Wiring = this.Wiring;
+            Wiring = _wiring;
 
             return Wiring;
         }
 
         public char ReflectLetter(char c)
         {
-            return Wiring[c];
+            return _wiring[c];
         }
 
         public char ReflectLetter(int i)
         {
-            char c = Wiring.ElementAt(i).Value;
+            char c = _wiring.ElementAt(i).Value;
             return c;
         }
 

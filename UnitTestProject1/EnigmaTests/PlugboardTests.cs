@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Enigma;
 
-namespace UnitTests
+namespace UnitTestProject1.EnigmaTests
 {
     /// <summary>
     /// Summary description for UnitTest1
@@ -61,7 +61,7 @@ namespace UnitTests
 
 
         [TestMethod]
-        public void SetWiring_ShouldAdd1Wiring()
+        public void SetWiring_ShouldSetCountTo2_WhenAddingOnePair()
         {
             // Arrange
             Plugboard plugboard = new Plugboard();
@@ -75,7 +75,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void SetWiring_ShouldAdd1Wiring_WhenDuplicateKey()
+        public void SetWiring_ShouldOnlyHaveCount2_WhenAddingDuplicateWireEndpont()
         {
             // Arrange
             Plugboard plugboard = new Plugboard();

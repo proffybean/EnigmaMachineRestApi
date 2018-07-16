@@ -4,7 +4,7 @@ using Enigma;
 using System.Collections.Generic;
 using static Enigma.Constants;
 
-namespace UnitTests
+namespace UnitTestProject1.EnigmaTests
 {
     [TestClass]
     public class EnigmaMachineTests

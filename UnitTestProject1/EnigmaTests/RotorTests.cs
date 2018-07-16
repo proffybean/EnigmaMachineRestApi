@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Enigma;
 
-namespace UnitTests
+namespace UnitTestProject1.EnigmaTests
 {
     /// <summary>
     /// Summary description for RotorTests
@@ -220,10 +220,10 @@ namespace UnitTests
 
             // Act
             rotor.SetDial('z');
-            char letter = rotor.ReverseConvertLetter('j');
+            char letter = rotor.ReverseConvertLetter(9); // TODO, use int here, not char
 
             // Assert
-            Assert.AreEqual('b', letter);
+            Assert.AreEqual('q', letter);
         }
 
 

@@ -67,17 +67,15 @@ namespace Enigma
         }
 
         // TODO: this function is wrong.
-        public char ReverseConvertLetter(char c)
-        {
-            int i = Array.IndexOf(_wiring, c);
-            //char convertedChar = (char)(i + Offset + Convert.ToByte('a'));
-            return ReverseConvertLetter(i);
-        }
+        //public char ReverseConvertLetter(char c)
+        //{
+        //    int i = Array.IndexOf(_wiring, c);
+        //    //char convertedChar = (char)(i + Offset + Convert.ToByte('a'));
+        //    return ReverseConvertLetter(i);
+        //}
 
         public char ReverseConvertLetter(int i)
         {
-            //char convertedChar = (char)(i + Offset + Convert.ToByte('a'));
-
             int characterNumber = Convert.ToByte('a') + (i + Offset) % 26;
             char convertedChar = (char)characterNumber;  // give T
 
@@ -145,7 +143,6 @@ namespace Enigma
 
         private void InitWiring2(string rotorMapping)
         {
-            //string wire = "BDFHJLCPRTXVZNYEIWGAKMUSQO".ToLower();
             _wiring2 = new Dictionary<char, char>();
 
             int i = 0;
@@ -157,8 +154,6 @@ namespace Enigma
 
         private void InitWiring(string rotorMapping)
         {
-            //string rotorMapping = mapping ?? "BDFHJLCPRTXVZNYEIWGAKMUSQO".ToLower();
-
             _wiring = new char[26];
 
             for (int i = 0; i < 26; i++)
