@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Enigma.Interfaces;
+using Enigma.Extensions;
 
 namespace Enigma
 {
@@ -53,7 +54,7 @@ namespace Enigma
         {
             //ASCIIEncoding.ASCII.GetBytes(c);
             //int i = Encoding.ASCII.GetBytes(c);
-            int i = Convert.ToByte(c) - Convert.ToByte('a');
+            int i = c.GetLetterIndex();
             return ConvertLetter(i);
         }
 
@@ -86,8 +87,9 @@ namespace Enigma
 
         public int GetNextRotorsIndex(char convertedChar)
         {
-            int i = Convert.ToByte(convertedChar) - Convert.ToByte('a');
-            int index = (i + (26 - Offset)) % 26;
+            //int i = Convert.ToByte(convertedChar) - Convert.ToByte('a');
+            int position = convertedChar.GetLetterIndex();
+            int index = (position + (26 - Offset)) % 26;
 
             return index;
         }
@@ -97,7 +99,8 @@ namespace Enigma
         /// </summary>
         public int ReverseGetNextRotorsIndex(char initialChar)
         {
-            int position = Convert.ToByte(initialChar) - Convert.ToByte('a');
+            //int position = Convert.ToByte(initialChar) - Convert.ToByte('a');
+            int position = initialChar.GetLetterIndex();
             int location = (position + (26 - Offset)) % 26;
 
             return location;
@@ -129,8 +132,9 @@ namespace Enigma
 
         public void SetDial(char c)
         {
-            int i = Convert.ToByte(c) - Convert.ToByte('a');
-            SetDial(i);
+            //int i = Convert.ToByte(c) - Convert.ToByte('a');
+            int position = c.GetLetterIndex();
+            SetDial(position);
         }
 
         public char[] GetCurrentRotor()

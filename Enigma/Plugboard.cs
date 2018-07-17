@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Enigma.Interfaces;
+using Enigma.Extensions;
 
 namespace Enigma
 {
@@ -52,11 +53,10 @@ namespace Enigma
             return letter;
         }
 
-        public char ConvertLetter(int i)
+        public char ConvertLetter(int plugboardLetterLocation)
         {
-            // convert i to letter
             char letter;
-            char initletter = (char)(Convert.ToByte('a') + i);
+            char initletter = plugboardLetterLocation.ConvertLocationToAscii();
 
             if (_wiring.ContainsValue(initletter))
             {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Enigma.Interfaces;
+using Enigma.Extensions;
 
 namespace Enigma
 {
@@ -71,7 +72,7 @@ namespace Enigma
 
         public int GetNextRotorsIndex(char c)
         {
-            int index = Convert.ToByte(c) - Convert.ToByte('a');
+            int index = c.GetLetterIndex();
 
             return index;
         }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="EnigmaMachine.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Interfaces\IEnigmaMachine.cs" />
     <Compile Include="Interfaces\IPlugboard.cs" />
     <Compile Include="Interfaces\IReflector.cs" />
@@ -51,5 +52,6 @@
     <Compile Include="Reflector.cs" />
     <Compile Include="Rotor.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
