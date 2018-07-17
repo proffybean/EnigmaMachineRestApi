@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Enigma;
+using static Enigma.Enums.Enumerations;
+using EnigmaMachineRestApi.Models;
+using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using EnigmaMachineRestApi.Models;
-using Newtonsoft.Json;
-using Enigma;
 
 namespace EnigmaMachineRestApi.Controllers
 {
@@ -50,7 +49,7 @@ namespace EnigmaMachineRestApi.Controllers
                     throw new Exception("Cound not parse third rotor");
                 }
 
-                staticEnigmaMachine.ChooseRotors(firstRotor, secondRotor, thirdRotor);
+                staticEnigmaMachine.ChooseRotors((RotorNumber)firstRotor, (RotorNumber)secondRotor, (RotorNumber)thirdRotor);
                 message = Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -142,9 +141,9 @@ namespace EnigmaMachineRestApi.Controllers
                 enigmaMachine.SetPlugboard(enigmaMachineDto.Plugboard.Wiring);
 
                 enigmaMachine.ChooseRotors(
-                    enigmaMachineDto.Rotor1.RotorNum,
-                    enigmaMachineDto.Rotor2.RotorNum,
-                    enigmaMachineDto.Rotor3.RotorNum);
+                    (RotorNumber)enigmaMachineDto.Rotor1.RotorNum,
+                    (RotorNumber)enigmaMachineDto.Rotor2.RotorNum,
+                    (RotorNumber)enigmaMachineDto.Rotor3.RotorNum);
 
                 enigmaMachine.SetRotorDials(
                     enigmaMachineDto.Rotor1.InitialDialSetting,

@@ -1,4 +1,5 @@
 ﻿using static Enigma.Constants;
+using static Enigma.Enums.Enumerations;
 using Enigma.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,36 +19,29 @@ namespace Enigma
         public EnigmaMachine()
         {
             plugboard = new Plugboard();
-            //rotor3 = new Rotor(rotorIII, true, rotorIIITurnover);
-            //rotor2 = new Rotor(rotorII, false, rotorIITurnover);
-            //rotor1 = new Rotor(rotorI, false, rotorITurnover);
-
-            //rotor3.AdvanceAdjacentRotor += rotor2.RotateHandler;
-            //rotor2.AdvanceAdjacentRotor += rotor1.RotateHandler;
-
             reflector = new Reflector();
         }
 
         /// <summary>
-        /// Chooses the rotors for you enigma machines
+        /// Chooses the rotors for your enigma machines
         /// </summary>
-        public void ChooseRotors(int rotor1, int rotor2, int rotor3)
+        public void ChooseRotors(RotorNumber rotor1, RotorNumber rotor2, RotorNumber rotor3)
         {
             switch (rotor3)
             {
-                case 1:
+                case RotorNumber.Rotor1:
                     this.rotor3 = new Rotor(rotorI, true, rotorITurnover);
                     break;
-                case 2:
+                case RotorNumber.Rotor2:
                     this.rotor3 = new Rotor(rotorII, true, rotorIITurnover);
                     break;
-                case 3:
+                case RotorNumber.Rotor3:
                     this.rotor3 = new Rotor(rotorIII, true, rotorIIITurnover);
                     break;
-                case 4:
+                case RotorNumber.Rotor4:
                     this.rotor3 = new Rotor(rotorIV, true, rotorIVTurnover);
                     break;
-                case 5:
+                case RotorNumber.Rotor5:
                     this.rotor3 = new Rotor(rotorV, true, rotorVTurnover);
                     break;
                 default:
@@ -56,19 +50,19 @@ namespace Enigma
 
             switch (rotor2)
             {
-                case 1:
+                case RotorNumber.Rotor1:
                     this.rotor2 = new Rotor(rotorI, false, rotorITurnover);
                     break;
-                case 2:
+                case RotorNumber.Rotor2:
                     this.rotor2 = new Rotor(rotorII, false, rotorIITurnover);
                     break;
-                case 3:
+                case RotorNumber.Rotor3:
                     this.rotor2 = new Rotor(rotorIII, false, rotorIIITurnover);
                     break;
-                case 4:
+                case RotorNumber.Rotor4:
                     this.rotor2 = new Rotor(rotorIV, false, rotorIVTurnover);
                     break;
-                case 5:
+                case RotorNumber.Rotor5:
                     this.rotor2 = new Rotor(rotorV, false, rotorVTurnover);
                     break;
                 default:
@@ -77,19 +71,19 @@ namespace Enigma
 
             switch (rotor1)
             {
-                case 1:
+                case RotorNumber.Rotor1:
                     this.rotor1 = new Rotor(rotorI, false, rotorITurnover);
                     break;
-                case 2:
+                case RotorNumber.Rotor2:
                     this.rotor1 = new Rotor(rotorII, false, rotorIITurnover);
                     break;
-                case 3:
+                case RotorNumber.Rotor3:
                     this.rotor1 = new Rotor(rotorIII, false, rotorIIITurnover);
                     break;
-                case 4:
+                case RotorNumber.Rotor4:
                     this.rotor1 = new Rotor(rotorIV, false, rotorIVTurnover);
                     break;
-                case 5:
+                case RotorNumber.Rotor5:
                     this.rotor1 = new Rotor(rotorV, false, rotorVTurnover);
                     break;
                 default:

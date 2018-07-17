@@ -59,7 +59,7 @@ namespace Enigma
         /// Encodes one letter through the rotor.  This only works for the initial trip
         /// to the reflector
         /// </summary>
-        public char ConvertLetter(char c) // TODO: make lowercase c.ToLower();
+        public char ConvertLetter(char c)
         {
             int i = c.GetLetterIndex();
             return ConvertLetter(i);

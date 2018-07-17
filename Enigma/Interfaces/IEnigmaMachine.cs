@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using static Enigma.Enums.Enumerations;
 
 namespace Enigma.Interfaces
 {
@@ -10,7 +7,7 @@ namespace Enigma.Interfaces
     {
         void SetPlugboardPair(char a, char b);
         void SetPlugboard(IEnumerable<KeyValuePair<char, char>> pairs);
-        void ChooseRotors(int rotor1, int rotor2, int rotor3);
+        void ChooseRotors(RotorNumber rotor1, RotorNumber rotor2, RotorNumber rotor3);
         void SetRotorDial(int rotorNumber, char rotorSetting);
         char Encode(char c);
         string Encode(string s);

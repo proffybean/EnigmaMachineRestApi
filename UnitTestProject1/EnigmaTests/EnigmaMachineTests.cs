@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Enigma;
 using System.Collections.Generic;
 using static Enigma.Constants;
+using static Enigma.Enums.Enumerations;
 
 namespace UnitTestProject1.EnigmaTests
 {
@@ -21,7 +22,7 @@ namespace UnitTestProject1.EnigmaTests
         public void TestInitialize()
         {
             enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(1,2,3);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor1, RotorNumber.Rotor2, RotorNumber.Rotor3);
 
             enigmaMachine.SetPlugboardPair('h', 's');
             enigmaMachine.SetPlugboardPair('a', 'e');
@@ -248,7 +249,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(1, 2, 3);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor1, RotorNumber.Rotor2, RotorNumber.Rotor3);
             enigmaMachine.SetRotorDials('a', 'a', 'z');
 
             enigmaMachine.SetPlugboardPair('h', 's');
@@ -274,7 +275,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(1, 2, 3);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor1, RotorNumber.Rotor2, RotorNumber.Rotor3);
             enigmaMachine.SetRotorDials('a', 'a', 'z');
             enigmaMachine.SetPlugboard(plugboardWiring);
             string plainText = "They call Me Mr Tibbs";
@@ -293,7 +294,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(2, 3, 4);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor2, RotorNumber.Rotor3, RotorNumber.Rotor4);
             enigmaMachine.SetRotorDials('a', 'b', 'c');
             enigmaMachine.SetPlugboard(plugboardWiring);
             string plainText = "bungalow";
@@ -312,7 +313,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(3, 4, 5);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor3, RotorNumber.Rotor4, RotorNumber.Rotor5);
             enigmaMachine.SetRotorDials('b', 'c', 'd');
             enigmaMachine.SetPlugboard(plugboardWiring);
             string plainText = "cynosure";
@@ -331,7 +332,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(5, 3, 1);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor5, RotorNumber.Rotor3, RotorNumber.Rotor1);
             enigmaMachine.SetRotorDials('b', 'j', 'n');
             enigmaMachine.SetPlugboard(plugboardWiring);
             string plainText = "dalliance";
@@ -350,7 +351,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(5, 3, 1);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor5, RotorNumber.Rotor3, RotorNumber.Rotor1);
             enigmaMachine.SetRotorDials('g', 'j', 'n');
             enigmaMachine.SetPlugboard(plugboardWiring);
             string plainText = "dalliance chatoyant";
@@ -369,7 +370,7 @@ namespace UnitTestProject1.EnigmaTests
         {
             // Arrange
             var enigmaMachine = new EnigmaMachine();
-            enigmaMachine.ChooseRotors(3, 1, 2);
+            enigmaMachine.ChooseRotors(RotorNumber.Rotor3, RotorNumber.Rotor1, RotorNumber.Rotor2);
             enigmaMachine.SetRotorDials('g', 'j', 'n');
             enigmaMachine.SetPlugboard(plugboardWiring);
             string plainText = "forbearance";
