@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Enigma.Interfaces;
 using Enigma.Extensions;
+using Enigma.Events;
 
 namespace Enigma
 {
@@ -165,11 +166,5 @@ namespace Enigma
                 _wiring[i] = rotorMapping[i];
             }
         }
-    }
-
-    public class AdvanceEventArgs : EventArgs
-    {
-        public string message;
-        public char character;
     }
 }
