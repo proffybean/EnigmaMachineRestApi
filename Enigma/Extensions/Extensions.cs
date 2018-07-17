@@ -4,6 +4,9 @@ namespace Enigma.Extensions
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Returns the location on a rotor to it's letter ascii value
+        /// </summary>
         public static char ConvertLocationToAscii(this int location)
         {
             char initletter = (char)(Convert.ToByte('a') + location);
@@ -21,6 +24,9 @@ namespace Enigma.Extensions
             return index;
         }
 
+        /// <summary>
+        /// Returns the ascii value of a character
+        /// </summary>
         public static uint GetAsciiValue(this char c)
         {
             uint asciiValue = Convert.ToByte(c);

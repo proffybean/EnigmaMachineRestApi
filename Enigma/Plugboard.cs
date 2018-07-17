@@ -17,6 +17,9 @@ namespace Enigma
             _wiring = new Dictionary<char, char>();
         }
 
+        /// <summary>
+        /// The current number of pairs connected on the plugboard
+        /// </summary>
         public int NumberPairs
         {
             get { return _wiring.Count; }
@@ -35,6 +38,9 @@ namespace Enigma
             }
         }
 
+        /// <summary>
+        /// Encodes one letter
+        /// </summary>
         public char ConvertLetter(char c)
         {
             char letter;
@@ -51,6 +57,10 @@ namespace Enigma
             return letter;
         }
 
+        /// <summary>
+        /// Encodes a location on the return trip frmo the static rotor, 
+        /// or Eintrittswalze (ETW), through the plugboard
+        /// </summary>
         public char ConvertLetter(int plugboardLetterLocation)
         {
             char letter;
@@ -68,6 +78,10 @@ namespace Enigma
             return letter;
         }
 
+        /// <summary>
+        /// Returns the plugboard wiring
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<char, char> GetWiring()
         {
             var wiring = new Dictionary<char, char>();
@@ -75,6 +89,9 @@ namespace Enigma
             return wiring;
         }
 
+        /// <summary>
+        /// Sets a wire from one letter to another
+        /// </summary>
         public void SetWiring(char char1, char char2)
         {
             if (_wiring.TryGetValue(char1, out char outChar))
@@ -96,6 +113,9 @@ namespace Enigma
             _wiring.Add(char2, char1);
         }
 
+        /// <summary>
+        /// Removes a wire from the plugboard
+        /// </summary>
         public void RemoveWiring(char char1, char char2)
         {
             if (_wiring.TryGetValue(char1, out char outChar))
@@ -116,6 +136,9 @@ namespace Enigma
             }
         }
 
+        /// <summary>
+        /// Removes all the wirings from the plugboard
+        /// </summary>
         public void ResetWiring()
         {
             _wiring.Clear();

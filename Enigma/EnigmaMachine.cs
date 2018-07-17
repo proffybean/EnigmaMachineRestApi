@@ -28,6 +28,9 @@ namespace Enigma
             reflector = new Reflector();
         }
 
+        /// <summary>
+        /// Chooses the rotors for you enigma machines
+        /// </summary>
         public void ChooseRotors(int rotor1, int rotor2, int rotor3)
         {
             switch (rotor3)
@@ -97,11 +100,17 @@ namespace Enigma
             this.rotor2.AdvanceAdjacentRotor += this.rotor1.RotateHandler;
         }
 
+        /// <summary>
+        /// Encodes one letter through the enigma machine
+        /// </summary>
         public char Encode(char c)
         {
             return ConvertCharacter(c);
         }
 
+        /// <summary>
+        /// Encodes an entire string through the enigma machine
+        /// </summary>
         public string Encode(string s)
         {
             StringBuilder sb = new StringBuilder();
@@ -126,11 +135,18 @@ namespace Enigma
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Inserts a wire from letter a to letter b
+        /// </summary>
         public void SetPlugboardPair(char a, char b)
         {
             plugboard.SetWiring(a, b);
         }
 
+        /// <summary>
+        /// Wets all the wire pairs in the plugboard from pairs collection
+        /// </summary>
+        /// <param name="pairs"></param>
         public void SetPlugboard(IEnumerable<KeyValuePair<char, char>> pairs)
         {
             if (pairs != null)
@@ -142,6 +158,9 @@ namespace Enigma
             }
         }
 
+        /// <summary>
+        /// Sets the dial on the given rotor
+        /// </summary>
         public void SetRotorDial(int rotorNumber, char rotorSetting)
         {
             switch (rotorNumber)
@@ -160,6 +179,9 @@ namespace Enigma
             }
         }
 
+        /// <summary>
+        /// Sets the rotor dials for all three rotors
+        /// </summary>
         public void SetRotorDials(char rotor1, char rotor2, char rotor3)
         {
             SetRotorDial(1, rotor1);
@@ -167,6 +189,9 @@ namespace Enigma
             SetRotorDial(3, rotor3);
         }
 
+        /// <summary>
+        /// The entire round trip encoing process for the given letter
+        /// </summary>
         public char ConvertCharacter(char c)
         {
             char next = plugboard.ConvertLetter(c);
@@ -197,6 +222,10 @@ namespace Enigma
             return lightBoardChar;
         }
 
+        /// <summary>
+        /// Conserve the plain text white space
+        /// </summary>
+        /// <param name="leaveWhiteSpace"></param>
         public void LeaveWhiteSpace(bool leaveWhiteSpace)
         {
             _leaveWhiteSpace = leaveWhiteSpace;

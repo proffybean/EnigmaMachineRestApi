@@ -16,7 +16,7 @@ namespace Enigma
         }
 
         /// <summary>
-        /// Wiring from http://enigmaco.de/enigma/enigma.html
+        /// Sets the reflector wiring from http://enigmaco.de/enigma/enigma.html
         /// </summary>
         private void SetWiring()
         {
@@ -48,6 +48,9 @@ namespace Enigma
             _wiring.Add('z', 't');
         }
 
+        /// <summary>
+        /// Returns the replector wiring
+        /// </summary>
         public Dictionary<char, char> GetWiring()
         {
             var Wiring = new Dictionary<char, char>();
@@ -56,17 +59,26 @@ namespace Enigma
             return Wiring;
         }
 
+        /// <summary>
+        /// Converts to giving letter through the reflector
+        /// </summary>
         public char ReflectLetter(char c)
         {
             return _wiring[c];
         }
 
+        /// <summary>
+        /// Converts to giving letter through the reflector
+        /// </summary>
         public char ReflectLetter(int i)
         {
             char c = _wiring.ElementAt(i).Value;
             return c;
         }
 
+        /// <summary>
+        /// Returns the index, or location, on the reflector of a giving character
+        /// </summary>
         public int GetNextRotorsIndex(char c)
         {
             int index = c.GetLetterIndex();

@@ -25,8 +25,15 @@ namespace Enigma
             _adjacentRotorAdvanceOffset = AdjacentRotorAdvanceOffset;
         }
 
+        /// <summary>
+        /// By default, set the rotor to rotor #3, don't rotate, and advance on letter 'A'
+        /// </summary>
         public Rotor() : this(Constants.rotorIII, false, 0) { }
 
+        /// <summary>
+        /// Represents the offset, or the amount the rotor has turned. 
+        /// A=0, B=1, C=2
+        /// </summary>
         public int Offset
         {
             get { return _dialOffset; }
@@ -40,17 +47,28 @@ namespace Enigma
             }
         }
 
+        /// <summary>
+        /// Returns the current setting on the dial
+        /// </summary>
         public char DialSetting
         {
             get { return (char)(Offset + 'A'.GetAsciiValue()); }
         }
 
+        /// <summary>
+        /// Encodes one letter through the rotor.  This only works for the initial trip
+        /// to the reflector
+        /// </summary>
         public char ConvertLetter(char c) // TODO: make lowercase c.ToLower();
         {
             int i = c.GetLetterIndex();
             return ConvertLetter(i);
         }
 
+        /// <summary>
+        /// Encodes one letter (in this case, the index on the rotor) through the rotor.  
+        /// This only works for the initial trip to the reflector
+        /// </summary>
         public char ConvertLetter(int i)
         {
             if (_rotate)
@@ -63,6 +81,10 @@ namespace Enigma
             return letter;
         }
 
+        /// <summary>
+        /// Encodes one letter (or the index on the rotor of the letter)
+        /// through the rotor on the return trip
+        /// </summary>
         public char ReverseConvertLetter(int i)
         {
             int characterNumber = Convert.ToByte('a') + (i + Offset) % 26;
@@ -73,6 +95,9 @@ namespace Enigma
             return initialChar;
         }
 
+        /// <summary>
+        /// Encodes one letter through the rotor on the return trip
+        /// </summary>
         public int GetNextRotorsIndex(char convertedChar)
         {
             int position = convertedChar.GetLetterIndex();
@@ -82,7 +107,8 @@ namespace Enigma
         }
 
         /// <summary>
-        /// To Be Used on return trip
+        /// Returns the index of the encoded character. To be used when
+        /// passing the letter to the next rotor
         /// </summary>
         public int ReverseGetNextRotorsIndex(char initialChar)
         {
@@ -92,16 +118,25 @@ namespace Enigma
             return location;
         }
 
+        /// <summary>
+        /// Returns the dial offset, or how many positions the rotor has been turned
+        /// </summary>
         public int GetDialOffset()
         {
             return this.Offset;
         }
 
+        /// <summary>
+        /// Handles the rotos rotation
+        /// </summary>
         public void RotateHandler(object sender, AdvanceEventArgs e)
         {
             Rotate();
         }
 
+        /// <summary>
+        /// Rotates the rotor. If necessary, also rotates the adjacent rotor.
+        /// </summary>
         public void Rotate()
         {
             if (Offset == _adjacentRotorAdvanceOffset)
@@ -112,17 +147,26 @@ namespace Enigma
             Offset = (Offset + 1) % 26;
         }
 
+        /// <summary>
+        /// Sets the dial on the rotor.
+        /// </summary>
         public void SetDial(int offSet)
         {
             this.Offset = offSet;
         }
 
+        /// <summary>
+        /// Sets the dial on the rotor.
+        /// </summary>
         public void SetDial(char c)
         {
             int position = c.GetLetterIndex();
             SetDial(position);
         }
 
+        /// <summary>
+        /// Returns the rotor wiring
+        /// </summary>
         public char[] GetCurrentRotorWiring()
         {
             char[] curRotor;
@@ -131,6 +175,9 @@ namespace Enigma
             return curRotor;
         }
 
+        /// <summary>
+        /// Initializes the rotor wiring to the given string of characters
+        /// </summary>
         private void InitializeWiring(string rotorMapping)
         {
             _wiring = new char[26];
