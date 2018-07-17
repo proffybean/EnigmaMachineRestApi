@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Enigma.Extensions;
 using Enigma.Interfaces;
-using Enigma.Extensions;
+using System;
+using System.Collections.Generic;
 
 namespace Enigma
 {

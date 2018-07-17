@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Enigma.Interfaces
+﻿namespace Enigma.Interfaces
 {
     public interface IRotor
     {
@@ -14,5 +8,6 @@ namespace Enigma.Interfaces
         void Rotate();
         void SetDial(int i);
         int GetDialOffset();
+        char DialSetting { get; }
     }
 }

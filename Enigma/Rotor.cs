@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Enigma.Interfaces;
+﻿using Enigma.Events;
 using Enigma.Extensions;
-using Enigma.Events;
+using Enigma.Interfaces;
+using System;
 
 namespace Enigma
 {
@@ -16,17 +12,15 @@ namespace Enigma
     /// </summary>
     public class Rotor : IRotor
     {
-        private Dictionary<char, char> _wiring2;
         public event AdvanceHandler AdvanceAdjacentRotor;
         private char[] _wiring;
         private int _dialOffset;
-        private bool _rotate;
-        private int _adjacentRotorAdvanceOffset;
+        private readonly bool _rotate;
+        private readonly int _adjacentRotorAdvanceOffset;
 
         public Rotor(string rotorMapping, bool rotate, int AdjacentRotorAdvanceOffset)
         {
-            InitWiring(rotorMapping);
-            InitWiring2(rotorMapping);
+            InitializeWiring(rotorMapping);
             _rotate = rotate;
             _adjacentRotorAdvanceOffset = AdjacentRotorAdvanceOffset;
         }
@@ -53,42 +47,34 @@ namespace Enigma
 
         public char ConvertLetter(char c) // TODO: make lowercase c.ToLower();
         {
-            //ASCIIEncoding.ASCII.GetBytes(c);
-            //int i = Encoding.ASCII.GetBytes(c);
             int i = c.GetLetterIndex();
             return ConvertLetter(i);
         }
 
         public char ConvertLetter(int i)
         {
-            if (_rotate) { Rotate(); }
-            //int index = (i + (26 - Offset)) % 26;
+            if (_rotate)
+            {
+                Rotate();
+            }
+
             int index = (i + Offset) % 26;
             char letter = _wiring[index];
             return letter;
         }
 
-        // TODO: this function is wrong.
-        //public char ReverseConvertLetter(char c)
-        //{
-        //    int i = Array.IndexOf(_wiring, c);
-        //    //char convertedChar = (char)(i + Offset + Convert.ToByte('a'));
-        //    return ReverseConvertLetter(i);
-        //}
-
         public char ReverseConvertLetter(int i)
         {
             int characterNumber = Convert.ToByte('a') + (i + Offset) % 26;
-            char convertedChar = (char)characterNumber;  // give T
+            char convertedChar = (char)characterNumber;
 
-            int locOnWheel = Array.IndexOf(_wiring, convertedChar); // where is T
+            int locOnWheel = Array.IndexOf(_wiring, convertedChar);
             char initialChar = (char)(Convert.ToByte('a') + locOnWheel);
             return initialChar;
         }
 
         public int GetNextRotorsIndex(char convertedChar)
         {
-            //int i = Convert.ToByte(convertedChar) - Convert.ToByte('a');
             int position = convertedChar.GetLetterIndex();
             int index = (position + (26 - Offset)) % 26;
 
@@ -100,7 +86,6 @@ namespace Enigma
         /// </summary>
         public int ReverseGetNextRotorsIndex(char initialChar)
         {
-            //int position = Convert.ToByte(initialChar) - Convert.ToByte('a');
             int position = initialChar.GetLetterIndex();
             int location = (position + (26 - Offset)) % 26;
 
@@ -134,12 +119,11 @@ namespace Enigma
 
         public void SetDial(char c)
         {
-            //int i = Convert.ToByte(c) - Convert.ToByte('a');
             int position = c.GetLetterIndex();
             SetDial(position);
         }
 
-        public char[] GetCurrentRotor()
+        public char[] GetCurrentRotorWiring()
         {
             char[] curRotor;
             curRotor = _wiring;
@@ -147,18 +131,7 @@ namespace Enigma
             return curRotor;
         }
 
-        private void InitWiring2(string rotorMapping)
-        {
-            _wiring2 = new Dictionary<char, char>();
-
-            int i = 0;
-            foreach (char c in Enumerable.Range(97, 26))
-            {
-                _wiring2.Add((char)c, rotorMapping[i++]);
-            }
-        }
-
-        private void InitWiring(string rotorMapping)
+        private void InitializeWiring(string rotorMapping)
         {
             _wiring = new char[26];
 

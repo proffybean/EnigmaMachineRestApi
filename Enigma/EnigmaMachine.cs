@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using static Enigma.Constants;
 using Enigma.Interfaces;
-using static Enigma.Constants;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Enigma
 {

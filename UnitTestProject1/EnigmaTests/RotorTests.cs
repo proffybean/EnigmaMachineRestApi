@@ -123,7 +123,7 @@ namespace UnitTestProject1.EnigmaTests
             Rotor rotor = new Rotor();
 
             // Act
-            char[] curRotor = rotor.GetCurrentRotor();
+            char[] curRotor = rotor.GetCurrentRotorWiring();
 
             // Assert
             Assert.AreEqual(26, curRotor.Length);
