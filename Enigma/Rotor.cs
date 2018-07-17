@@ -48,7 +48,7 @@ namespace Enigma
 
         public char DialSetting
         {
-            get { return (char)(Offset + Convert.ToByte('A')); }
+            get { return (char)(Offset + 'A'.GetAsciiValue()); }
         }
 
         public char ConvertLetter(char c) // TODO: make lowercase c.ToLower();
@@ -121,7 +121,8 @@ namespace Enigma
         {
             if (Offset == _adjacentRotorAdvanceOffset)
             {
-                AdvanceAdjacentRotor?.Invoke(this, new AdvanceEventArgs { message = "I'm advancing", character = _wiring[22] });
+                AdvanceAdjacentRotor?.Invoke(this, 
+                    new AdvanceEventArgs { message = "Rotor Advancing from setting", character = DialSetting });
             }
             Offset = (Offset + 1) % 26;
         }

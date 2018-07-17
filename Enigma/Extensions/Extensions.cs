@@ -24,5 +24,12 @@ namespace Enigma.Extensions
 
             return index;
         }
+
+        public static uint GetAsciiValue(this char c)
+        {
+            uint asciiValue = Convert.ToByte(c);
+
+            return asciiValue;
+        }
     }
 }
