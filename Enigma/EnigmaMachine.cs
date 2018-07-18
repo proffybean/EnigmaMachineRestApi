@@ -9,17 +9,17 @@ namespace Enigma
 {
     public class EnigmaMachine : IEnigmaMachine
     {
-        private Plugboard plugboard;
-        private Rotor rotor3;
-        private Rotor rotor2;
-        private Rotor rotor1;
-        private Reflector reflector;
+        private Plugboard _plugboard;
+        private Rotor _rotor3;
+        private Rotor _rotor2;
+        private Rotor _rotor1;
+        private Reflector _reflector;
         private bool _leaveWhiteSpace;
 
         public EnigmaMachine()
         {
-            plugboard = new Plugboard();
-            reflector = new Reflector();
+            _plugboard = new Plugboard();
+            _reflector = new Reflector();
         }
 
         /// <summary>
@@ -30,19 +30,19 @@ namespace Enigma
             switch (rotor3)
             {
                 case RotorNumber.Rotor1:
-                    this.rotor3 = new Rotor(rotorI, true, rotorITurnover);
+                    this._rotor3 = new Rotor(rotorI, true, rotorITurnover);
                     break;
                 case RotorNumber.Rotor2:
-                    this.rotor3 = new Rotor(rotorII, true, rotorIITurnover);
+                    this._rotor3 = new Rotor(rotorII, true, rotorIITurnover);
                     break;
                 case RotorNumber.Rotor3:
-                    this.rotor3 = new Rotor(rotorIII, true, rotorIIITurnover);
+                    this._rotor3 = new Rotor(rotorIII, true, rotorIIITurnover);
                     break;
                 case RotorNumber.Rotor4:
-                    this.rotor3 = new Rotor(rotorIV, true, rotorIVTurnover);
+                    this._rotor3 = new Rotor(rotorIV, true, rotorIVTurnover);
                     break;
                 case RotorNumber.Rotor5:
-                    this.rotor3 = new Rotor(rotorV, true, rotorVTurnover);
+                    this._rotor3 = new Rotor(rotorV, true, rotorVTurnover);
                     break;
                 default:
                     throw new IndexOutOfRangeException($"{rotor3} is not a valid rotor");
@@ -51,19 +51,19 @@ namespace Enigma
             switch (rotor2)
             {
                 case RotorNumber.Rotor1:
-                    this.rotor2 = new Rotor(rotorI, false, rotorITurnover);
+                    this._rotor2 = new Rotor(rotorI, false, rotorITurnover);
                     break;
                 case RotorNumber.Rotor2:
-                    this.rotor2 = new Rotor(rotorII, false, rotorIITurnover);
+                    this._rotor2 = new Rotor(rotorII, false, rotorIITurnover);
                     break;
                 case RotorNumber.Rotor3:
-                    this.rotor2 = new Rotor(rotorIII, false, rotorIIITurnover);
+                    this._rotor2 = new Rotor(rotorIII, false, rotorIIITurnover);
                     break;
                 case RotorNumber.Rotor4:
-                    this.rotor2 = new Rotor(rotorIV, false, rotorIVTurnover);
+                    this._rotor2 = new Rotor(rotorIV, false, rotorIVTurnover);
                     break;
                 case RotorNumber.Rotor5:
-                    this.rotor2 = new Rotor(rotorV, false, rotorVTurnover);
+                    this._rotor2 = new Rotor(rotorV, false, rotorVTurnover);
                     break;
                 default:
                     throw new IndexOutOfRangeException($"{rotor2} is not a valid rotor");
@@ -72,26 +72,26 @@ namespace Enigma
             switch (rotor1)
             {
                 case RotorNumber.Rotor1:
-                    this.rotor1 = new Rotor(rotorI, false, rotorITurnover);
+                    this._rotor1 = new Rotor(rotorI, false, rotorITurnover);
                     break;
                 case RotorNumber.Rotor2:
-                    this.rotor1 = new Rotor(rotorII, false, rotorIITurnover);
+                    this._rotor1 = new Rotor(rotorII, false, rotorIITurnover);
                     break;
                 case RotorNumber.Rotor3:
-                    this.rotor1 = new Rotor(rotorIII, false, rotorIIITurnover);
+                    this._rotor1 = new Rotor(rotorIII, false, rotorIIITurnover);
                     break;
                 case RotorNumber.Rotor4:
-                    this.rotor1 = new Rotor(rotorIV, false, rotorIVTurnover);
+                    this._rotor1 = new Rotor(rotorIV, false, rotorIVTurnover);
                     break;
                 case RotorNumber.Rotor5:
-                    this.rotor1 = new Rotor(rotorV, false, rotorVTurnover);
+                    this._rotor1 = new Rotor(rotorV, false, rotorVTurnover);
                     break;
                 default:
                     throw new IndexOutOfRangeException($"{rotor1} is not a valid rotor");
             }
 
-            this.rotor3.AdvanceAdjacentRotor += this.rotor2.RotateHandler;
-            this.rotor2.AdvanceAdjacentRotor += this.rotor1.RotateHandler;
+            this._rotor3.AdvanceAdjacentRotor += this._rotor2.RotateHandler;
+            this._rotor2.AdvanceAdjacentRotor += this._rotor1.RotateHandler;
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Enigma
         /// </summary>
         public void SetPlugboardPair(char a, char b)
         {
-            plugboard.SetWiring(a, b);
+            _plugboard.SetWiring(a, b);
         }
 
         /// <summary>
@@ -160,13 +160,13 @@ namespace Enigma
             switch (rotorNumber)
             {
                 case 1:
-                    rotor1.SetDial(rotorSetting);
+                    _rotor1.SetDial(rotorSetting);
                     break;
                 case 2:
-                    rotor2.SetDial(rotorSetting);
+                    _rotor2.SetDial(rotorSetting);
                     break;
                 case 3:
-                    rotor3.SetDial(rotorSetting);
+                    _rotor3.SetDial(rotorSetting);
                     break;
                 default:
                     break;
@@ -188,30 +188,30 @@ namespace Enigma
         /// </summary>
         public char ConvertCharacter(char c)
         {
-            char next = plugboard.ConvertLetter(c);
+            char next = _plugboard.ConvertLetter(c);
 
-            char next2 = rotor3.ConvertLetter(next);
-            int rotor2index = rotor3.GetNextRotorsIndex(next2);
+            char next2 = _rotor3.ConvertLetter(next);
+            int rotor2index = _rotor3.GetNextRotorsIndex(next2);
 
-            char next3 = rotor2.ConvertLetter(rotor2index);
-            int rotor1index = rotor2.GetNextRotorsIndex(next3);
+            char next3 = _rotor2.ConvertLetter(rotor2index);
+            int rotor1index = _rotor2.GetNextRotorsIndex(next3);
 
-            char next4 = rotor1.ConvertLetter(rotor1index);
-            int reflectorIndex = rotor1.GetNextRotorsIndex(next4);
+            char next4 = _rotor1.ConvertLetter(rotor1index);
+            int reflectorIndex = _rotor1.GetNextRotorsIndex(next4);
 
-            char next5 = reflector.ReflectLetter(reflectorIndex);
-            int nextRotor1Index = reflector.GetNextRotorsIndex(next5);
+            char next5 = _reflector.ReflectLetter(reflectorIndex);
+            int nextRotor1Index = _reflector.GetNextRotorsIndex(next5);
 
-            char initLetter1 = rotor1.ReverseConvertLetter(nextRotor1Index);
-            int nextRotor2Index = rotor1.ReverseGetNextRotorsIndex(initLetter1);
+            char initLetter1 = _rotor1.ReverseConvertLetter(nextRotor1Index);
+            int nextRotor2Index = _rotor1.ReverseGetNextRotorsIndex(initLetter1);
 
-            char initLetter2 = rotor2.ReverseConvertLetter(nextRotor2Index);
-            int nextRotor3Index = rotor2.ReverseGetNextRotorsIndex(initLetter2);
+            char initLetter2 = _rotor2.ReverseConvertLetter(nextRotor2Index);
+            int nextRotor3Index = _rotor2.ReverseGetNextRotorsIndex(initLetter2);
 
-            char initLetter3 = rotor3.ReverseConvertLetter(nextRotor3Index);
-            int plugBoardIndex = rotor3.ReverseGetNextRotorsIndex(initLetter3);
+            char initLetter3 = _rotor3.ReverseConvertLetter(nextRotor3Index);
+            int plugBoardIndex = _rotor3.ReverseGetNextRotorsIndex(initLetter3);
 
-            char lightBoardChar = plugboard.ConvertLetter(plugBoardIndex);
+            char lightBoardChar = _plugboard.ConvertLetter(plugBoardIndex);
 
             return lightBoardChar;
         }
