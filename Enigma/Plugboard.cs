@@ -121,7 +121,9 @@ namespace Enigma
         /// </summary>
         public void RemoveWiring(char char1, char char2)
         {
-            if (_wiring.TryGetValue(char1, out char outChar))
+            char outChar;
+
+            if (_wiring.TryGetValue(char1, out outChar))
             {
                 if (outChar == char2)
                 {
