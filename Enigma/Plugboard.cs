@@ -94,12 +94,15 @@ namespace Enigma
         /// </summary>
         public void SetWiring(char char1, char char2)
         {
-            if (_wiring.TryGetValue(char1, out char outChar))
+            char outChar;
+            char outChar2;
+
+            if (_wiring.TryGetValue(char1, out outChar))
             {
                 RemoveWiring(char1, outChar);
             }
 
-            if (_wiring.TryGetValue(outChar, out char outChar2))
+            if (_wiring.TryGetValue(outChar, out outChar2))
             {
                 RemoveWiring(outChar, outChar2);
             }
