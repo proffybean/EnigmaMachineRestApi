@@ -9,6 +9,7 @@ namespace Enigma
 
     /// <summary>
     /// Rotor wiring found from https://en.wikipedia.org/wiki/Enigma_rotor_details
+    /// 
     /// </summary>
     public class Rotor : IRotor
     {
