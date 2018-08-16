@@ -118,6 +118,7 @@ namespace Enigma
 
         /// <summary>
         /// Removes a wire from the plugboard
+        /// 
         /// </summary>
         public void RemoveWiring(char char1, char char2)
         {
