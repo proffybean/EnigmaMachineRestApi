@@ -1,0 +1,70 @@
+{
+	"id": "b6efa4a2-c821-4c8d-a950-2948369cc811",
+	"name": "Enigma",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"6afd30cf-5d69-4c32-84e6-9e19960eb79e",
+		"b704629a-d71c-4d7c-9996-88d2d36779b1"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "6afd30cf-5d69-4c32-84e6-9e19960eb79e",
+			"name": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true",
+			"url": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "leaveWhiteSpace",
+					"value": "true",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n  \"MachineName\": \"sample string 1\",\r\n  \"Rotor1\": {\r\n    \"RotorNum\": 1,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor2\": {\r\n    \"RotorNum\": 2,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor3\": {\r\n    \"RotorNum\": 3,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Plugboard\": {\r\n    \"Wiring\": {\r\n      \"a\": \"b\"\r\n    }\r\n  },\r\n  \"Text\": \"hi Dan stop how are you stop\"\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "b704629a-d71c-4d7c-9996-88d2d36779b1",
+			"name": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true Copy",
+			"url": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n  \"MachineName\": \"sample string 1\",\r\n  \"Rotor1\": {\r\n    \"RotorNum\": 1,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor2\": {\r\n    \"RotorNum\": 2,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor3\": {\r\n    \"RotorNum\": 3,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Plugboard\": {\r\n    \"Wiring\": {\r\n      \"a\": \"b\"\r\n    }\r\n  },\r\n  \"Text\": \"hi Dan stop how are you stop\"\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
