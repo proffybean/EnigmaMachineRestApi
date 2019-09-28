@@ -1,20 +1,21 @@
 {
-	"id": "b6efa4a2-c821-4c8d-a950-2948369cc811",
+	"id": "23da3e30-c600-46f4-97c2-c61ec60da3de",
 	"name": "Enigma",
 	"description": "",
 	"auth": null,
 	"events": null,
 	"variables": [],
 	"order": [
-		"6afd30cf-5d69-4c32-84e6-9e19960eb79e",
-		"b704629a-d71c-4d7c-9996-88d2d36779b1"
+		"ffd001fa-2bb5-4bd5-b4e9-ac394b5b286b",
+		"18edfadb-d112-47aa-a058-ee837226b086",
+		"1db2a56a-772a-4150-abc3-579655c6e9bc"
 	],
 	"folders_order": [],
 	"folders": [],
 	"requests": [
 		{
-			"id": "6afd30cf-5d69-4c32-84e6-9e19960eb79e",
-			"name": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true",
+			"id": "18edfadb-d112-47aa-a058-ee837226b086",
+			"name": "Encrypt/Decrypt Message",
 			"url": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true",
 			"description": "",
 			"data": [],
@@ -39,17 +40,17 @@
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "{\r\n  \"MachineName\": \"sample string 1\",\r\n  \"Rotor1\": {\r\n    \"RotorNum\": 1,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor2\": {\r\n    \"RotorNum\": 2,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor3\": {\r\n    \"RotorNum\": 3,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Plugboard\": {\r\n    \"Wiring\": {\r\n      \"a\": \"b\"\r\n    }\r\n  },\r\n  \"Text\": \"hi Dan stop how are you stop\"\r\n}",
+			"rawModeData": "{\r\n  \"MachineName\": \"Mein Enigma\",\r\n  \"Text\": \"Dude, Where's my Enigma?\",\r\n  \"Rotor1\": {\r\n    \"RotorNum\": 1,\r\n    \"Setting\": \"b\"\r\n  },\r\n  \"Rotor2\": {\r\n    \"RotorNum\": 3,\r\n    \"Setting\": \"s\"\r\n  },\r\n  \"Rotor3\": {\r\n    \"RotorNum\": 4,\r\n    \"Setting\": \"z\"\r\n  },\r\n  \"Plugboard\": {\r\n    \"Wiring\": {\r\n      \"a\":\"b\",\r\n      \"z\":\"w\",\r\n      \"r\":\"c\",\r\n      \"d\":\"e\",\r\n      \"f\":\"g\",\r\n      \"h\":\"i\",\r\n      \"j\":\"k\",\r\n      \"m\":\"n\",\r\n      \"o\":\"p\",\r\n      \"q\":\"s\"\r\n    }\r\n  }\r\n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		},
 		{
-			"id": "b704629a-d71c-4d7c-9996-88d2d36779b1",
+			"id": "1db2a56a-772a-4150-abc3-579655c6e9bc",
 			"name": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true Copy",
 			"url": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/",
 			"description": "",
-			"data": [],
-			"dataMode": "raw",
+			"data": null,
+			"dataMode": null,
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -62,7 +63,37 @@
 			"auth": null,
 			"events": [],
 			"folder": null,
-			"rawModeData": "{\r\n  \"MachineName\": \"sample string 1\",\r\n  \"Rotor1\": {\r\n    \"RotorNum\": 1,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor2\": {\r\n    \"RotorNum\": 2,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor3\": {\r\n    \"RotorNum\": 3,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Plugboard\": {\r\n    \"Wiring\": {\r\n      \"a\": \"b\"\r\n    }\r\n  },\r\n  \"Text\": \"hi Dan stop how are you stop\"\r\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "ffd001fa-2bb5-4bd5-b4e9-ac394b5b286b",
+			"name": "Encrypt/Decrypt Message (Leave White Space)",
+			"url": "https://enigmamachinerestapi.azurewebsites.net/api/Enigma/Encrypt?leaveWhiteSpace=true",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "leaveWhiteSpace",
+					"value": "true",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n  \"MachineName\": \"Mein Enigma\",\r\n  \"Text\": \"This is a test of the enigma machine encoding!\",\r\n  \"Rotor1\": {\r\n    \"RotorNum\": 4,\r\n    \"Setting\": \"a\"\r\n  },\r\n  \"Rotor2\": {\r\n    \"RotorNum\": 5,\r\n    \"Setting\": \"b\"\r\n  },\r\n  \"Rotor3\": {\r\n    \"RotorNum\": 1,\r\n    \"Setting\": \"c\"\r\n  },\r\n  \"Plugboard\": {\r\n    \"Wiring\": {\r\n      \"a\":\"b\",\r\n      \"z\":\"w\",\r\n      \"r\":\"c\",\r\n      \"d\":\"e\",\r\n      \"f\":\"g\",\r\n      \"h\":\"i\",\r\n      \"j\":\"k\",\r\n      \"m\":\"n\",\r\n      \"o\":\"p\",\r\n      \"q\":\"s\"\r\n    }\r\n  }\r\n}",
 			"headers": "Content-Type: application/json\n",
 			"pathVariables": {}
 		}
