@@ -6,9 +6,12 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using Microsoft.AspNetCore.Cors;
 
 namespace EnigmaMachineRestApi.Controllers
 {
+
     [RoutePrefix("api/Enigma")]
     public class EnigmaController : ApiController
     {
@@ -21,6 +24,7 @@ namespace EnigmaMachineRestApi.Controllers
         /// </summary>
         /// <param name="rotors">String of length 3 containing numerals 1-5</param>
         /// <returns></returns>
+        [DisableCors]
         [Route("ChooseRotors")]
         [HttpPost]
         public HttpResponseMessage ChooseRotors([FromUri] string rotors)
@@ -62,6 +66,7 @@ namespace EnigmaMachineRestApi.Controllers
 
         [Route("SetRotor/{id:int:Range(1,3)}")]
         [HttpPost]
+        [DisableCors]
         public HttpResponseMessage SetRotor([FromBody] RotorDto rotorDto, [FromUri] int id)
         {
             HttpResponseMessage response;
@@ -83,6 +88,7 @@ namespace EnigmaMachineRestApi.Controllers
 
         [Route("SetPlugboard")]
         [HttpPost]
+        [DisableCors]
         public HttpResponseMessage SetPlugboard([FromBody] PlugboardDto plugboardDto)
         {
             HttpResponseMessage response;
@@ -104,6 +110,7 @@ namespace EnigmaMachineRestApi.Controllers
 
         [Route("EncryptStatic")]
         [HttpPost]
+        [DisableCors]
         public HttpResponseMessage EncryptStatic([FromBody] string text)
         {
             HttpResponseMessage message;
@@ -130,6 +137,7 @@ namespace EnigmaMachineRestApi.Controllers
         /// <returns>Enigma encryted text</returns>
         [Route("Encrypt")]
         [HttpPost]
+        [DisableCors]
         public HttpResponseMessage Encrypt([FromBody] EnigmaMachineDto enigmaMachineDto, [FromUri] bool leaveWhiteSpace)
         {
             HttpResponseMessage response;
@@ -162,6 +170,13 @@ namespace EnigmaMachineRestApi.Controllers
             }
 
             return response;
+        }
+
+        [Route("TuringBombe")]
+        [HttpGet]
+        public IHttpActionResult TuringBombe()
+        {
+            return Ok("Hello Turing");
         }
     }
 }
